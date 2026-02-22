@@ -5,7 +5,7 @@ def preprocess_data(df):
 
     # Keep only necessary columns
     required_cols = ["Latitude", "Longitude", "Date"]
-df = df[[col for col in required_cols if col in df.columns]]
+    df = df[[col for col in required_cols if col in df.columns]]
 
     # Convert Date to datetime
     if "Date" in df.columns:
@@ -18,3 +18,4 @@ df = df[[col for col in required_cols if col in df.columns]]
 
 
     return df
+
