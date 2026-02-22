@@ -2,9 +2,8 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
-import joblib
-
-df = pd.read_csv("data/raw/crime_2025_present.csv")
+import os
+df = pd.read_csv(os.path.join("data", "raw", "crime_2025_present.csv"))
 
 df["Date"] = pd.to_datetime(df["Date"])
 df["Hour"] = df["Date"].dt.hour
@@ -25,6 +24,3 @@ model.fit(X_train, y_train)
 
 accuracy = model.score(X_test, y_test)
 print("Model Accuracy:", accuracy)
-
-joblib.dump(model, "models/crime_risk_model.pkl")
-joblib.dump(scaler, "models/scaler.pkl")
