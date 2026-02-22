@@ -1,5 +1,4 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
 
@@ -7,10 +6,16 @@ def train_model(df):
 
     df = df.copy()
 
-    df["Date"] = pd.to_datetime(df["Date"])
+    df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
     df["Hour"] = df["Date"].dt.hour
     df["Weekend"] = df["Date"].dt.dayofweek.apply(lambda x: 1 if x >= 5 else 0)
-    df["RiskLevel"] = df["Arrest"].apply(lambda x: 1 if x == True else 0)
+
+    # --- FIX: Handle missing 'Arrest' column ---
+    if "Arrest" in df.columns:
+        df["RiskLevel"] = df["Arrest"].apply(lambda x: 1 if x == True else 0)
+    else:
+        # If column missing, default all to 0 (low risk)
+        df["RiskLevel"] = 0
 
     X = df[["Latitude", "Longitude", "Hour", "Weekend"]]
     y = df["RiskLevel"]
@@ -39,6 +44,7 @@ def predict_risk(df, lat, lon, hour, weekend):
 
     prediction = model.predict(input_scaled)[0]
 
+    # You can still calculate CVI
     cvi = 85 if prediction == 1 else 15
 
     return cvi
