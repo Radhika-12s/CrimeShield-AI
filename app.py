@@ -135,7 +135,6 @@ elif page == "📊 Risk Analysis":
 
     if st.button("🚀 Analyze Location"):
 
-        prediction, probability = predict_risk(lat, lon, hour, weekend)
         cvi = predict_risk(df, lat, lon, hour, weekend)
 
         st.session_state.analysis_done = True
@@ -249,3 +248,4 @@ temporal patterns in your uploaded dataset.
 For predictive scoring, use the Risk Analysis section.
 
 """)
+
