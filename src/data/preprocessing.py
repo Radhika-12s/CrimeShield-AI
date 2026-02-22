@@ -5,7 +5,7 @@ def preprocess_data(df):
 
     # Keep only necessary columns
     required_cols = ["Latitude", "Longitude", "Date"]
-    df = df[[col for col in df.columns if col in df.columns]]
+df = df[[col for col in required_cols if col in df.columns]]
 
     # Convert Date to datetime
     if "Date" in df.columns:
@@ -15,5 +15,6 @@ def preprocess_data(df):
 
     # Drop rows without coordinates
     df = df.dropna(subset=["Latitude", "Longitude"])
+
 
     return df
