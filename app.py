@@ -136,7 +136,7 @@ elif page == "📊 Risk Analysis":
     if st.button("🚀 Analyze Location"):
 
         prediction, probability = predict_risk(lat, lon, hour, weekend)
-        cvi = calculate_cvi(probability)
+        cvi = predict_risk(df, lat, lon, hour, weekend)
 
         st.session_state.analysis_done = True
         st.session_state.prediction = prediction
@@ -247,4 +247,5 @@ The AI automatically analyzes spatial clustering and
 temporal patterns in your uploaded dataset.
 
 For predictive scoring, use the Risk Analysis section.
+
 """)
