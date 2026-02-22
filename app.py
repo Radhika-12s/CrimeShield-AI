@@ -138,7 +138,7 @@ elif page == "📊 Risk Analysis":
         cvi = predict_risk(df, lat, lon, hour, weekend)
 
         st.session_state.analysis_done = True
-        st.session_state.prediction = prediction
+        st.session_state.prediction = cvi
         st.session_state.cvi = cvi
         st.session_state.lat = lat
         st.session_state.lon = lon
@@ -248,4 +248,5 @@ temporal patterns in your uploaded dataset.
 For predictive scoring, use the Risk Analysis section.
 
 """)
+
 
