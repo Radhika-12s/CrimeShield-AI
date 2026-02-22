@@ -149,7 +149,7 @@ elif page == "📊 Risk Analysis":
     if st.session_state.analysis_done:
 
         st.markdown("### 📈 Crime Vulnerability Index")
-        st.metric("CVI Score", f"{cvi} / 100")
+        st.metric("CVI Score", f"{st.session_state.cvi} / 100")
 
         if st.session_state.prediction == 1:
             st.error("⚠ HIGH RISK ZONE")
@@ -248,6 +248,7 @@ temporal patterns in your uploaded dataset.
 For predictive scoring, use the Risk Analysis section.
 
 """)
+
 
 
 
