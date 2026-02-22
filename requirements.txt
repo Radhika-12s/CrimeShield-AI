@@ -5,5 +5,5 @@ scikit-learn
 fpdf
 folium
 streamlit-folium
-joblib
 plotly
+
