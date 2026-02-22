@@ -248,6 +248,12 @@ temporal patterns in your uploaded dataset.
 For predictive scoring, use the Risk Analysis section.
 
 """)
+        if not df.empty:
+    fig = px.scatter_mapbox(...)
+    st.plotly_chart(fig, use_container_width=True)
+else:
+    st.warning("Dataset is empty or missing coordinates")
+
 
 
 
