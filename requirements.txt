@@ -2,6 +2,7 @@ streamlit
 pandas
 numpy
 scikit-learn
-joblib
-plotly
 fpdf
+folium
+streamlit-folium
+joblib
